@@ -1,0 +1,9 @@
+module pAnd(x, y, z);
+input x,y;
+output  z;
+
+wire w1;
+and and_gate(z,x,y);
+
+
+endmodule

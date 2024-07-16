@@ -1,0 +1,65 @@
+|whole_system
+a => a~0.IN1
+b => b~0.IN1
+invertA => invertA~0.IN1
+invertB => invertB~0.IN1
+c_in => c_in~0.IN1
+input4 => input4~0.IN1
+s[0] => s[0]~1.IN1
+s[1] => s[1]~0.IN1
+c_out <= adder:comb_10.port1
+res <= MUX4x1:comb_11.port0
+
+
+|whole_system|MUX2x1_A:comb_4
+input1 => gate1.IN0
+input2 => gate2.IN1
+s => gate1.IN1
+s => gate2.IN0
+out <= gate4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|whole_system|MUX2x1_B:comb_6
+input1 => gate1.IN0
+input2 => gate2.IN1
+s => gate1.IN1
+s => gate2.IN0
+out <= gate4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|whole_system|pAnd:comb_8
+x => and_gate.IN0
+y => and_gate.IN1
+z <= and_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|whole_system|pOr:comb_9
+x => or_gate.IN0
+y => or_gate.IN1
+z <= or_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|whole_system|adder:comb_10
+input1 => gate4.IN0
+input1 => gate1.IN0
+input2 => gate4.IN1
+input2 => gate1.IN1
+c_in => gate2.IN0
+sum <= gate2.DB_MAX_OUTPUT_PORT_TYPE
+c_out <= gate4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|whole_system|MUX4x1:comb_11
+input1 => a1.IN0
+input2 => a2.IN2
+input3 => a3.IN2
+input4 => ~NO_FANOUT~
+res <= a5.DB_MAX_OUTPUT_PORT_TYPE
+s[0] => a2.IN1
+s[0] => a3.IN1
+s[0] => a1.IN2
+s[1] => a3.IN0
+s[1] => a2.IN0
+s[1] => a1.IN1
+
+
